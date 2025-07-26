@@ -3,7 +3,7 @@
   <h1 class="headline-medium fs-1 on-surface-text">{{ .Title }}</h1>
   {{ with .OutputFormats.Get "rss" -}}
     <div class="rss-holder">
-      <md-filled-icon-button href="{{ .Permalink }}" target="_blank">
+      <md-filled-icon-button href="{{ .RelPermalink }}" target="_blank">
         <md-icon>rss_feed</md-icon>
       </md-filled-icon-button>
     </div>

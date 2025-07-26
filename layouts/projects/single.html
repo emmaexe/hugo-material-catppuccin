@@ -4,13 +4,13 @@
     <div class="inline-container">
       <div class="mx-auto"></div>
       {{ if .Params.thumbnail }}
-          <img class="thumbnail" src="{{ .Permalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
+          <img class="thumbnail" src="{{ .RelPermalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
       {{ end }}
       <h1 class="my-auto headline-large fs-1">{{ .Title }}</h2>
       <div class="mx-auto"></div>
     </div>
     {{ if .Params.banner }}
-      <img class="banner" src="{{ .Permalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
+      <img class="banner" src="{{ .RelPermalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
     {{ end }}
     <div class="linkStyle fs-5 py-2">
       {{ .Content }}

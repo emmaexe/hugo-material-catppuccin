@@ -22,16 +22,16 @@
                 {{ range .Pages }}
                     <md-elevated-card class="slideIn card-element px-1 py-3">
                         <div class="body-medium text-center fs-6 on-surface-text px-3">
-                            <a class="inline-container specialLinkStyle" href="{{ .Permalink }}">
+                            <a class="inline-container specialLinkStyle" href="{{ .RelPermalink }}">
                                 <div class="mx-auto"></div>
                                 {{ if .Params.thumbnail }}
-                                    <img class="thumbnail" src="{{ .Permalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
+                                    <img class="thumbnail" src="{{ .RelPermalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
                                 {{ end }}
                                 <h2 class="my-auto">{{ .LinkTitle }}</h2>
                                 <div class="mx-auto"></div>
                             </a>
                             {{ if .Params.banner }}
-                                <img class="banner" src="{{ .Permalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
+                                <img class="banner" src="{{ .RelPermalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
                             {{ end }}
                             <div class="py-2 linkStyle">
                                 {{- if .Description -}}

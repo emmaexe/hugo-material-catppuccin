@@ -2,21 +2,21 @@
 
 <div class="me-auto">
   {{ with .Site.GetPage "page" "links" }}
-    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .Permalink }}">
+    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .RelPermalink }}">
       <md-icon slot="icon">link</md-icon>
       {{ .Title }}
     </md-filled-button>
   {{ end }}
 
   {{ with .Site.GetPage "page" "posts" }}
-    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .Permalink }}">
+    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .RelPermalink }}">
       <md-icon slot="icon">newspaper</md-icon>
       {{ .Title }}
     </md-filled-button>
   {{ end }}
 
   {{ with .Site.GetPage "page" "projects" }}
-    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .Permalink }}">
+    <md-filled-button class="fs-6 mb-2 mb-lg-0" href="{{ .RelPermalink }}">
       <md-icon slot="icon">code_blocks</md-icon>
       {{ .Title }}
     </md-filled-button>
