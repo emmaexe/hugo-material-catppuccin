@@ -1,0 +1,49 @@
+{{ define "main" }}
+    <div class="mx-4">
+        {{/*  <div class="fadeIn d-flex justify-content-between align-items-center">
+            <h1 class="headline-medium fs-1 on-surface-text">{{ .Title }}</h1>
+            {{ with .OutputFormats.Get "rss" -}}
+                <div class="rss-holder">
+                    <md-filled-icon-button href="{{ .Permalink }}" target="_blank">
+                    <md-icon>rss_feed</md-icon>
+                    </md-filled-icon-button>
+                </div>
+            {{ end }}
+        </div>  */}}
+        {{- if .Content -}}
+            <md-elevated-card class="slideIn px-1 py-3 mx-4 my-1">
+                <div class="body-medium text-center fs-1 on-surface-text px-3">
+                    {{ .Content }}
+                </div>
+            </md-elevated-card>
+        {{- end -}}
+        <div class="mx-auto">
+            <div class="card-container">
+                {{ range .Pages }}
+                    <md-elevated-card class="slideIn card-element px-1 py-3">
+                        <div class="body-medium text-center fs-6 on-surface-text px-3">
+                            <a class="inline-container specialLinkStyle" href="{{ .Permalink }}">
+                                <div class="mx-auto"></div>
+                                {{ if .Params.thumbnail }}
+                                    <img class="thumbnail" src="{{ .Permalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
+                                {{ end }}
+                                <h2 class="my-auto">{{ .LinkTitle }}</h2>
+                                <div class="mx-auto"></div>
+                            </a>
+                            {{ if .Params.banner }}
+                                <img class="banner" src="{{ .Permalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
+                            {{ end }}
+                            <div class="py-2 linkStyle">
+                                {{- if .Description -}}
+                                    {{ .Description | markdownify }}
+                                {{- else -}}
+                                    {{ .Summary }}
+                                {{- end -}}
+                            </div>
+                        </div>
+                    </md-elevated-card>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

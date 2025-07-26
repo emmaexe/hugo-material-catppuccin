@@ -1,0 +1,45 @@
+{{- /*
+For a given taxonomy, renders a list of terms assigned to the page.
+
+@context {page} page The current page.
+@context {string} taxonomy The taxonony.
+
+@example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+*/}}
+
+{{- $page := .page }}
+{{- $taxonomy := .taxonomy }}
+
+{{- with $page.GetTerms $taxonomy }}
+  {{- $label := (index . 0).Parent.LinkTitle }}
+  <div class="py-1">
+    {{- if eq $label "Tags" -}}
+      <i class="fa fa-tag" aria-hidden="true"></i><span> </span>
+    {{ else if eq $label "Categories" }}
+      <i class="fa fa-folder" aria-hidden="true"></i><span> </span>
+    {{ else if eq $label "Authors" }}
+      <i class="fa fa-user" aria-hidden="true"></i><span> </span>
+    {{ else if eq $label "Series" }}
+      <i class="fa fa-bookmark" aria-hidden="true"></i><span> </span>
+    {{- end -}}
+
+    {{- range $index, $el := . -}}
+      {{- if gt $index 0 }}
+        {{- if eq $label "Authors" -}}
+          <span class="separator"> • </span>
+        {{- else -}}
+          <span class="separator"> • </span>
+        {{- end -}}
+      {{- end }}
+      {{- if eq $label "Authors" -}}
+        <span class="author">
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </span>
+      {{- else -}}
+        <span class="tag">
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </span>
+      {{- end -}}
+    {{- end -}}
+  </div>
+{{- end }}

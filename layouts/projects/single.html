@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="body-medium fs-6 on-surface-text">
+  <md-elevated-card class="slideIn animationPriority1 text-center px-1 py-3 mx-4 my-1">
+    <div class="inline-container">
+      <div class="mx-auto"></div>
+      {{ if .Params.thumbnail }}
+          <img class="thumbnail" src="{{ .Permalink }}{{ .Params.thumbnail }}" alt="Thumbnail for {{ .Title }}">
+      {{ end }}
+      <h1 class="my-auto headline-large fs-1">{{ .Title }}</h2>
+      <div class="mx-auto"></div>
+    </div>
+    {{ if .Params.banner }}
+      <img class="banner" src="{{ .Permalink }}{{ .Params.banner }}" alt="Banner for {{ .Title }}">
+    {{ end }}
+    <div class="linkStyle fs-5 py-2">
+      {{ .Content }}
+    </div>
+  </md-elevated-card>
+</div>
+{{ end }}

@@ -1,0 +1,49 @@
+.post-content {
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.post-image {
+    text-align: center;
+    margin: 1em 0;
+}
+
+.post-image img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.caption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+.post-width {
+    width: 60%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    .post-width {
+        width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .post-width {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-width {
+        width: 95%;
+        padding: 0 16px;
+    }
+}

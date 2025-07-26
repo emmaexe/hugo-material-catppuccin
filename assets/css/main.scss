@@ -1,0 +1,46 @@
+$enable-grid-classes: false;
+$enable-cssgrid: true;
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import 'material-theme/theme';
+@import 'card';
+@import 'notices';
+@import 'post';
+@import 'links';
+@import 'projects';
+@import 'header-footer';
+@import 'colors';
+@import 'custom';
+
+body {
+    background-color: var(--md-sys-color-background);
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('{{ relURL "fonts" }}/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('{{ relURL "fonts" }}/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('{{ relURL "fonts" }}/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Monocraft';
+    src: url('{{ relURL "fonts" }}/Monocraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

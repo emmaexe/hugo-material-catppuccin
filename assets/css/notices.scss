@@ -1,0 +1,133 @@
+$fg-color-notice-note-icon: #5e35b1 !default;
+$bg-color-notice-note-title: #673ab71a !default;
+$bg-color-notice-note-content: #7e57c21a !default;
+$fg-color-notice-tip-icon: #00897b !default;
+$bg-color-notice-tip-title: #0096881a !default;
+$bg-color-notice-tip-content: #26a69a1a !default;
+$fg-color-notice-example-icon: #6d4c41 !default;
+$bg-color-notice-example-title: #7955481a !default;
+$bg-color-notice-example-content: #8d6e631a !default;
+$fg-color-notice-question-icon: #7cb342 !default;
+$bg-color-notice-question-title: #8bc34a1a !default;
+$bg-color-notice-question-content: #9ccc651a !default;
+$fg-color-notice-info-icon: #1e88e5 !default;
+$bg-color-notice-info-title: #2196f31a !default;
+$bg-color-notice-info-content: #42a5f51a !default;
+$fg-color-notice-warning-icon: #ffb300 !default;
+$bg-color-notice-warning-title: #ffc1071a !default;
+$bg-color-notice-warning-content: #ffca281a !default;
+$fg-color-notice-error-icon: #e53935 !default;
+$bg-color-notice-error-title: #f443361a !default;
+$bg-color-notice-error-content: #ef53501a !default;
+
+.notice {
+    border-radius: 0.2rem;
+    position: relative;
+    margin: 2rem 0;
+    padding: 0 0.75rem;
+    overflow: auto;
+
+    .notice-title {
+        position: relative;
+        font-weight: 700;
+        margin: 0 -0.75rem;
+        padding: 0.2rem 0.5rem;
+        border-bottom: 1px solid rgb(205, 214, 244); // $bg-color
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 1.8rem;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .notice-content {
+        display: block;
+        margin: 1rem 1rem;
+    }
+}
+
+.notice.note {
+    background-color: $bg-color-notice-note-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-note-title;
+
+        i {
+            color: $fg-color-notice-note-icon;
+        }
+    }
+}
+
+.notice.tip {
+    background-color: $bg-color-notice-tip-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-tip-title;
+
+        i {
+            color: $fg-color-notice-tip-icon;
+        }
+    }
+}
+
+.notice.example {
+    background-color: $bg-color-notice-example-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-example-title;
+
+        i {
+            color: $fg-color-notice-example-icon;
+        }
+    }
+}
+
+.notice.question {
+    background-color: $bg-color-notice-question-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-question-title;
+
+        i {
+            color: $fg-color-notice-question-icon;
+        }
+    }
+}
+
+.notice.info {
+    background-color: $bg-color-notice-info-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-info-title;
+
+        i {
+            color: $fg-color-notice-info-icon;
+        }
+    }
+}
+
+.notice.warning {
+    background-color: $bg-color-notice-warning-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-warning-title;
+
+        i {
+            color: $fg-color-notice-warning-icon;
+        }
+    }
+}
+
+.notice.error {
+    background-color: $bg-color-notice-error-content;
+
+    .notice-title {
+        background-color: $bg-color-notice-error-title;
+
+        i {
+            color: $fg-color-notice-error-icon;
+        }
+    }
+}

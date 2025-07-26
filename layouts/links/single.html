@@ -1,0 +1,12 @@
+{{ define "main" }}
+    <md-elevated-card class="fadeIn px-1 py-3 mx-4 my-1">
+        <h1 class="title-large text-center on-surface-text px-3">
+            Redirecting...
+        </h1>
+    </md-elevated-card>
+    <script>
+        window.addEventListener('load', function() {
+            window.location.href = "/links";
+        });
+    </script>
+{{ end }}

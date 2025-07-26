@@ -1,0 +1,20 @@
+{{ $href := .Get "href" }}
+{{ $target := .Get "target" | default "_blank" }}
+{{ $icon := .Get "icon" }}
+{{ $icontype := .Get "icontype" }}
+
+{{ with .Get "class" }}
+    {{ $class := . | safeHTMLAttr }}
+    <md-{{ $class }}-button{{- if $href }} href="{{ $href }}" {{- end }} target="{{ $target }}">
+        {{ if $icon }}
+            {{- if eq $icontype "fa" -}}
+                <i class="{{ $icon }}" aria-hidden="true"></i>
+            {{- else if eq $icontype "custom" -}}
+                <img src="/icons/{{ $icon }}.svg" slot="icon">
+            {{- else -}}
+                <md-icon slot="icon">{{ $icon }}</md-icon>
+            {{- end -}}
+        {{ end }}
+        {{ $.Inner }}
+    </md-{{ $class }}-button>
+{{ end }}

@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="body-medium fs-6 on-surface-text">
+  <div class="fadeIn animationPriority1 post-width px-3 mx-auto">
+    <h1 class="g-col-8 headline-large fs-1"><b>{{ .Title }}</b></h1>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format "2006-01-02" }}
+    <div class="inline-container">
+      <div>
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        <b><time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time></b>
+      </div>
+      {{- if .ReadingTime -}}
+        <div class="inline-element">
+          <i class="fa fa-clock" aria-hidden="true"></i>
+          <b>{{ .ReadingTime }}-minute read</b>
+        </div>
+      {{- end -}}
+    </div>
+    {{ partial "terms.html" (dict "taxonomy" "authors" "page" .) }}
+    {{ partial "terms.html" (dict "taxonomy" "series" "page" .) }}
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  </div>
+  <md-elevated-card class="slideIn animationPriority1 post-width px-1 py-3 mx-auto my-1">
+    <div class="linkStyle post-content px-3">
+      {{ .Content }}
+    </div>
+  </md-elevated-card>
+  <md-elevated-card class="slideIn animationPriority2 post-width px-1 py-3 mx-auto my-4">
+    <div class="commentBox">
+      {{ partial "giscus.html" . }}
+    </div>
+  </md-elevated-card>
+</div>
+{{ if (findRE "<pre" .Content 1) }}
+  {{ with resources.Get "js/codeblock.js" }}
+    <script src="{{ .RelPermalink }}"></script>
+  {{ end }}
+{{ end }}
+{{ end }}

@@ -1,0 +1,37 @@
+{{/* Get address, protocol, and other parameters */}}
+{{- $address := .Get "address" -}}
+{{- $protocol := .Get "protocol" | default "mailto" -}}
+{{- $parts := split $address "@" -}}
+{{- $user := (index $parts 0) -}}
+{{- $domain := (index $parts 1) | default "" -}}
+{{- $query := .Get "query" | default "" -}}
+
+{{/* Compute md5 fingerprint */}}
+{{- $fingerprint := md5 (print $address $protocol (index (seq 999 | shuffle) 0)) | truncate 8 "" -}}
+
+{{/*  Get button information  */}}
+{{- $class := .Get "class" | default "" -}}
+{{ $icon := .Get "icon" }}
+{{ $icontype := .Get "icontype" }}
+
+<md-{{ $class }}-button id="button-{{ $fingerprint }}">
+  {{ if $icon }}
+    {{- if eq $icontype "fa" -}}
+      <i class="{{ $icon }}" aria-hidden="true"></i>
+    {{- else if eq $icontype "custom" -}}
+      <img src="/icons/{{ $icon }}.svg" slot="icon">
+    {{- else -}}
+      <md-icon slot="icon">{{ $icon }}</md-icon>
+    {{- end -}}
+  {{ end }}
+  {{ $.Inner }}
+</md-{{ $class }}-button>
+
+<script id="script-{{ $fingerprint }}">
+  window.addEventListener('load', function() {
+    var button = document.getElementById("button-{{ $fingerprint }}");
+    var address = "{{ range $index := seq (sub (len $user) 1) 0}}{{ substr $user $index 1}}{{ end }}".split('').reverse().join(''){{ with $domain }} + "@" + "{{ range $index := seq (sub (len $domain) 1) 0}}{{ substr $domain $index 1}}{{ end }}".split('').reverse().join(''){{ with $query }} + "?" + "{{ range $index := seq (sub (len $query) 1) 0}}{{ substr $query $index 1}}{{ end }}".split('').reverse().join(''){{ end }}{{ end }};
+    button.setAttribute("href", "{{ $protocol }}:" + address);
+    button.removeAttribute("id");
+  });
+</script>

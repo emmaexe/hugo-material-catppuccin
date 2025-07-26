@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="fadeIn px-4 d-flex justify-content-between align-items-center">
+  <h1 class="headline-medium fs-1 on-surface-text">{{ .Title }}</h1>
+  {{ with .OutputFormats.Get "rss" -}}
+    <div class="rss-holder">
+      <md-filled-icon-button href="{{ .Permalink }}" target="_blank">
+        <md-icon>rss_feed</md-icon>
+      </md-filled-icon-button>
+    </div>
+  {{ end }}
+</div>
+<md-elevated-card class="fadeIn px-1 py-3 mx-4 my-1">
+  <div class="body-medium fs-6 on-surface-text px-3">
+    {{ .Content }}
+  </div>
+  <div class="body-medium fs-6 on-surface-text px-3">
+  {{ if .Pages }}
+    {{ range .Pages }}
+      <md-elevated-card class="slideIn p-3 my-2">
+        <h2><a class="headline-small specialLinkStyle" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        <div class="body-medium fs-6 on-surface-text">
+          {{- if .Description -}}
+            {{ .Description }}
+          {{- else -}}
+            {{ .Summary }}
+          {{- end -}}
+        </div>
+      </md-elevated-card>
+    {{ end }}
+  {{ else }}
+    <div class="text-center">
+      <h1>Oh no... the cat ate the content.</h2>
+      <img style="width: 100%; height: auto;" src="https://http.cat/204">
+      <h5>There is nothing here.</h5>
+    </div>
+  {{ end }}
+  </div>
+</md-elevated-card>
+{{ end }}

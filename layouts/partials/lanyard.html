@@ -1,0 +1,41 @@
+{{- if isset .Site.Params "lanyard" -}}
+    {{- if .Site.Params.lanyard.discordID -}}
+        <script>
+            const discordID = "{{ .Site.Params.lanyard.discordID }}";
+            const enablePicture = "{{ default true .Site.Params.lanyard.enablePicture }}" === "true" ? true : false;
+            const enableName = "{{ default true .Site.Params.lanyard.enableName }}" === "true" ? true : false;
+            const enableStatus = "{{ default true .Site.Params.lanyard.enableStatus }}" === "true" ? true : false;
+
+            window.addEventListener('load', function() {
+                const eventData = { enabled: true, discordId: discordID, enablePicture: enablePicture, enableName: enableName, enableStatus: enableStatus };
+                const lanyardEvent = new CustomEvent('lanyardUpdate', { detail: eventData });
+                document.dispatchEvent(lanyardEvent);
+            });
+        </script>
+        <div id="lanyardContainer">
+            <div class="text-center">
+              <img id="lanyardStatusPicture" class="pfp" src="/blank.png">
+              <p id="lanyardStatusName" class="pfp-name">...</p>
+            </div>
+            <div class="mx-auto text-center">
+              <div class="indicatorRow">
+                  <div id="lanyardStatusCircle" class="indicator"></div>
+                  <span id="lanyardStatusValue" class="pfp-status">...</span>
+              </div>
+            </div>
+        </div>
+    {{- end -}}
+{{- end -}}
+
+
+<!--
+
+<script>
+    window.addEventListener('load', function() {
+        const eventData = { enabled: false };
+        const lanyardEvent = new CustomEvent('lanyardUpdate', { detail: eventData });
+        document.dispatchEvent(lanyardEvent);
+    });
+</script>
+
+-->

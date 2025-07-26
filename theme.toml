@@ -1,0 +1,6 @@
+name = "hugo-material-catppuccin"
+license = "GPLv3"
+licenselink = "https://github.com/emmaexe/hugo-material-catppuccin/LICENSE"
+description = 'Hugo theme with material design and in the catppuccin color scheme.'
+homepage = 'https://github.com/emmaexe/hugo-material-catppuccin'
+demosite = 'https://emmaexe.moe/'

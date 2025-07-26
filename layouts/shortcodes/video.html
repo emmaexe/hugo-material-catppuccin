@@ -1,0 +1,9 @@
+{{ $location := .Get 0 }}
+{{ if $location }}
+    <div style="text-align: center;">
+        <video controls style="max-width: 100%; height: auto;" class="px-3">
+            <source src="{{ .Page.RelPermalink }}{{ $location }}" type="video/mp4">
+            If you are seeing this, a video that is supposed to be here didn't load properly.
+        </video>
+    </div>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+    <div class="mx-4">
+        {{- if .Content -}}
+            <md-elevated-card class="slideIn px-1 py-3 mx-4 my-1">
+                <div class="body-medium text-center fs-1 on-surface-text px-3">
+                    {{ .Content }}
+                </div>
+            </md-elevated-card>
+        {{- end -}}
+        <div class="mx-auto">
+            <div class="card-container">
+                {{ range .Pages }}
+                    <md-elevated-card id="card-element-{{ .File.BaseFileName }}" class="card-element slideIn px-1 py-3">
+                        <div class="body-medium text-center fs-6 on-surface-text px-3">
+                            <h2>{{ .LinkTitle }}</h2>
+                            <div>
+                                {{ .Description }}
+                            </div>
+                            <div class="py-2">
+                                {{ .Content }}
+                            </div>
+                        </div>
+                    </md-elevated-card>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+{{ end }}

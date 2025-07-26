@@ -1,0 +1,57 @@
+.card-element {
+    width: 100%;
+    max-width: 415px;
+    min-height: 512px;
+}
+
+.card-container {
+    display: grid;
+    gap: 1rem;
+    max-width: 100%;
+}
+
+@media (min-width: 1320px) {
+    .card-container {
+        grid-template-columns: 1fr 415px 1fr;
+    }
+
+    .card-container > .card-element:nth-child(3n+1) {
+        margin-left: auto;
+        margin-right: 0;
+    }
+    
+    .card-container > .card-element:nth-child(3n+2) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card-container > .card-element:nth-child(3n) {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 890px) and (max-width: 1319px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-container > .card-element:nth-child(odd) {
+        margin-left: auto;
+    }
+
+    .card-container > .card-element:nth-child(even) {
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 889px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card-container > .card-element:nth-child(n) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

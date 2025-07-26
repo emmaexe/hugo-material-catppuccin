@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="body-medium fs-6 on-surface-text">
+  <div class="fadeIn animationPriority1 grid align-items-center">
+    <h1 class="g-col-8 headline-medium fs-1 px-4">{{ .Title }}</h1>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format "2006-01-02" }}
+    <time class="g-col-4 fs-5 dateElement" datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  </div>
+  <md-elevated-card class="slideIn animationPriority1 px-1 py-3 mx-4 my-1">
+    <div class="linkStyle px-3">
+      {{ .Content }}
+    </div>
+  </md-elevated-card>
+</div>
+{{ end }}

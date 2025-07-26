@@ -1,0 +1,43 @@
+<meta charset="UTF-8">
+<title>{{ if .Params.seo.title }}{{ .Params.seo.title }}{{ else }}{{ .Title }} | {{ .Site.Title }} {{ end }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ if or (.Params.description) (.Summary) }}
+    <meta name="description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary }}{{ end }}">
+{{ end }}
+{{ if .Params.Tags }}<meta name="keywords" content="{{ delimit .Params.Tags ", " }}">{{ end }}
+<link rel="canonical" href="{{ .Permalink }}" />
+<link rel="shortcut icon" href="{{ .Site.Params.settings.icon }}">
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
+
+{{ if .Param "math" }}
+    {{ partialCached "math.html" . }}
+{{ end }}
+
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+
+    const customTheme = {
+        darkMode: true,
+        background: "#11111b",
+        primaryColor: "#313244",
+        primaryTextColor: "#cba6f7",
+        primaryBorderColor: "#cba6f7",
+        secondaryColor: "#45475a",
+        secondaryTextColor: "#cdd6f4",
+        secondaryBorderColor: "#cba6f7",
+        lineColor: "#cba6f7",
+        clusterBkg: "#585b70",
+        edgeLabelBackground: "#11111B"
+    };
+
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: "base",
+        themeVariables: customTheme
+    });
+</script>
+
+{{ partialCached "head/css.html" . }}
+{{ partialCached "head/js.html" . }}
